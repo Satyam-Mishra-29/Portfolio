@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Onclick events for buttons
     document.querySelectorAll(".download-CV").forEach(button => {
         button.addEventListener("click", () => {
-            location.href = "Resumme.pdf";
+            location.href = "Resume 3.0.pdf";
         });
     });
 
