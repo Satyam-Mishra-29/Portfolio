@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Onclick events for buttons
     document.querySelectorAll(".download-CV").forEach(button => {
         button.addEventListener("click", () => {
-            location.href = "Resume 3.0.pdf";
+            location.href = "Resumme.pdf";
         });
     });
 
@@ -53,7 +53,7 @@ ScrollReveal({
   ScrollReveal().reveal('.About','.project' ,{origin :'top'});
   ScrollReveal().reveal('.resume-content', {origin :'bottom'});
   ScrollReveal().reveal('.Skills-content', {origin :'left'});
-  ScrollReveal().reveal('.contact', {origin :'right'});
+  ScrollReveal().reveal('.contact', {origin :'bottom'});
 
 /*==================================================== Email Sending Function =================================================== */
 document.addEventListener("DOMContentLoaded", () => {
@@ -71,12 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Onclick events for buttons
-    document.querySelectorAll("button").forEach(button => {
-        button.addEventListener("click", () => {
-            alert(`You clicked on ${button.textContent}`);
-        });
-    });
 
     // Scroll sensitivity (optional customization)
     const scrollSensitivity = 50; // Customize the sensitivity value as needed
@@ -160,3 +154,78 @@ document.addEventListener("DOMContentLoaded", () => {
             menuIcon.classList.remove('fa-x');
             navbar.classList.remove('active');
           };
+
+// Project Slideshow
+const carousel = document.querySelector('.carousel');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+let currentSlide = 0;
+
+// Get the number of project cards (slides)
+const totalSlides = document.querySelectorAll('.project-cards').length;
+
+// Auto-scroll settings
+const autoScrollInterval = 5000; // Time in milliseconds (3 seconds)
+let autoScroll;
+
+// Function to update carousel position
+function updateCarousel() {
+    const slideWidth = carousel.clientWidth;
+    carousel.style.transform = `translateX(${-currentSlide * slideWidth}px)`;
+}
+
+// Function to go to the next slide
+function nextSlide() {
+    if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+    } else {
+        currentSlide = 0;
+    }
+    updateCarousel();
+}
+
+// Function to go to the previous slide
+function prevSlide() {
+    if (currentSlide > 0) {
+        currentSlide--;
+    } else {
+        currentSlide = totalSlides - 1;
+    }
+    updateCarousel();
+}
+
+// Event listeners for manual controls (Next/Prev buttons)
+nextBtn.addEventListener('click', () => {
+    nextSlide();
+    resetAutoScroll(); 
+});
+
+prevBtn.addEventListener('click', () => {
+    prevSlide();
+    resetAutoScroll(); 
+});
+
+// Function to start auto-scrolling
+function startAutoScroll() {
+    autoScroll = setInterval(() => {
+        nextSlide();
+    }, autoScrollInterval);
+}
+
+// Function to reset the auto-scroll when user interacts with the carousel
+function resetAutoScroll() {
+    clearInterval(autoScroll);  
+    startAutoScroll();         
+}
+
+// Initialize auto-scrolling when the page loads
+startAutoScroll();
+
+
+document.querySelector('.button').addEventListener('mouseenter', () => {
+    clearInterval(autoScroll);  
+});
+
+document.querySelector('.button').addEventListener('mouseleave', () => {
+    startAutoScroll();         
+});
