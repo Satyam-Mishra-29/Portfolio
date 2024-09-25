@@ -686,15 +686,6 @@ footer > .left-footer{
     .Skills-content {
         height: auto;
     }
-    .card {
-        width: 90%;
-    }
-    .projects {
-        padding: 2%;
-    }
-    .projectcards {
-        grid-template-columns: 1fr;
-    }
     .form {
         width: 90%;
     }
@@ -730,10 +721,6 @@ footer > .left-footer{
     .content > button{
         font-size: 0.5rem;
     }
-    
-    .card__content > ul {
-        grid-template-columns: 1fr;
-    }
     .form {
         width: 100%;
         padding-inline: 1em;
@@ -752,11 +739,6 @@ footer > .left-footer{
     footer > .right-footer > span{
         display: none;
     }
-    .projectcard  > a > .card:hover::after {
-        bottom: 0;
-        opacity: 1;
-    }
-    .projectcard  >a > .card:active::after {
-        height: 0rem;
-    }
+   
 }
+
